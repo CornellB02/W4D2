@@ -1,33 +1,50 @@
 require_relative "piece.rb"
+require_relative "queen.rb"
+require_relative "king.rb"
+require_relative "bishop.rb"
+require_relative "knight.rb"
+require_relative "rook.rb"
+require_relative "rook.rb"
+require_relative "nullpiece.rb"
 
 class Board
 
-  attr_accessor :rows
+  attr_accessor :board
 
   def initialize
-    @rows = Array.new(8) {Array.new(8, nil)}
+    @board = Array.new(8) {Array.new(8)}
   end
 
   def [](pos)
     row, col = pos
-    @rows[row][col]
+    @board[row][col]
   end
 
   def []=(pos, val)
     row, col = pos
-    @rows[row][col] = val
+    @board[row][col] = val
   end
 
   def move_piece(start_pos, end_pos)
-    if @rows[start_pos].nil?
+    if @board[start_pos].is_a?(Nullpiece)
       raise "there is no piece to move"
-   elsif !@rows[end_pos].nil?            #acc to chess rules
+   elsif !@board[end_pos].nil?            #acc to chess rules
       raise "cannot move there"
    else
-      @rows[start_pos] = nil
-      @rows[end_pos] = piece?
+      @board[start_pos].is_a?(Nullpiece)
+      @board[end_pos] = piece?
     end
   end
 
-
+ def populate
+  #row 1 and row 6 are pawns
+  @board.each.with_index do |row, idx|
+    if idx == 1 || idx = 6
+      row.each.with_index do |spot, idx1|
+        @board[idx][idx1] = Pawn.new
+      end
+    end
+  end
+  
+ end
 end
