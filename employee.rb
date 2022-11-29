@@ -10,8 +10,8 @@ class Employee
     end
 
     def bonus(multi)
-        (@salary) * multi
+       bonus = @salary * multi
+       bonus 
     end
-
 
 end
