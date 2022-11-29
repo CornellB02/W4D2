@@ -1,7 +1,9 @@
+require_relative 'piece'
+
 class Queen < Piece
 
-  def initialize
-    super(color, board, pos)
+  def initialize(color, board, pos)
+    super
   end
 
   def symbol

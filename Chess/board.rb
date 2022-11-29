@@ -39,7 +39,7 @@ class Board
  def populate
   #row 1 and row 6 are pawns
   @board.each.with_index do |row, idx|
-    if idx == 1 || idx = 6
+    if idx == 1 || idx == 6
       row.each.with_index do |spot, idx1|
         @board[idx][idx1] = Pawn.new
       end
