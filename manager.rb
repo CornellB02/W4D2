@@ -3,7 +3,8 @@ require_relative "employee.rb"
 attr_accessor :employees
 
 class Manager < Employee
-    def initialize
+    def initialize(name, title, salary, boss=nil)
+        super 
         @employees = []
     end
 
